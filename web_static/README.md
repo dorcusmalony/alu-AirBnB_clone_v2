@@ -1,1 +1,1 @@
-This directory implements webpage design.
+This directory implements the page design done by Dorcus and Dieuddonne.
