@@ -1,10 +1,18 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """A module for web application deployment with Fabric."""
+=======
+""" Function that compress a folder """
+from datetime import datetime
+from fabric.api import *
+import shlex
+>>>>>>> 227dceb8492cb285a164eee8dae1adf076420763
 import os
 from datetime import datetime
 from fabric.api import env, local, put, run, runs_once
 
 
+<<<<<<< HEAD
 # List of host server IP addresses
 env.hosts = ["52.87.254.62", "54.237.204.77"]
 env.user = 'ubuntu'
@@ -32,8 +40,29 @@ def do_pack():
     except Exception:
         output = None
     return output
+=======
+env.hosts = ['3.85.84.57', '54.196.167.246']
+env.user = "ubuntu"
 
 
+def do_deploy(archive_path):
+    """ Deploys """
+    if not os.path.exists(archive_path):
+        return False
+    try:
+        name = archive_path.replace('/', ' ')
+        name = shlex.split(name)
+        name = name[-1]
+
+        wname = name.replace('.', ' ')
+        wname = shlex.split(wname)
+        wname = wname[0]
+>>>>>>> 227dceb8492cb285a164eee8dae1adf076420763
+
+        releases_path = "/data/web_static/releases/{}/".format(wname)
+        tmp_path = "/tmp/{}".format(name)
+
+<<<<<<< HEAD
 def do_deploy(archive_path):
     """Deploys the static files to the host servers.
     Args:
@@ -59,3 +88,17 @@ def do_deploy(archive_path):
     except Exception:
         success = False
     return success
+=======
+        put(archive_path, "/tmp/")
+        run("mkdir -p {}".format(releases_path))
+        run("tar -xzf {} -C {}".format(tmp_path, releases_path))
+        run("rm {}".format(tmp_path))
+        run("mv {}web_static/* {}".format(releases_path, releases_path))
+        run("rm -rf {}web_static".format(releases_path))
+        run("rm -rf /data/web_static/current")
+        run("ln -s {} /data/web_static/current".format(releases_path))
+        print("New version deployed!")
+        return True
+    except:
+        return False
+>>>>>>> 227dceb8492cb285a164eee8dae1adf076420763
