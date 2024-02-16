@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 #!/usr/bin/python3
 """
 Writing a Fabric script that distributes
@@ -40,4 +37,3 @@ def do_deploy(archive_path):
         return True
     except BaseException:
         return False
->>>>>>> 87a94ef5cf523d8e6658ece4a4c65b0c420f521f

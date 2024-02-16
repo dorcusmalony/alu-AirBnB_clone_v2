@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 #!/usr/bin/python3
 """
 Write a Fabric script that creates and
@@ -56,4 +53,3 @@ def deploy():
     if archive_path is None:
         return False
     return do_deploy(archive_path)
->>>>>>> 87a94ef5cf523d8e6658ece4a4c65b0c420f521f

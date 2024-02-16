@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #!/usr/bin/env bash
 # Writing a Bash script that sets up your web servers for the deployment of web_static
 
@@ -21,4 +19,3 @@ sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 sudo chown -R ubuntu:ubuntu /data/
 sudo sed -i "39 i\ \tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}\n" /etc/nginx/sites-available/default
 sudo service nginx restart
->>>>>>> 87a94ef5cf523d8e6658ece4a4c65b0c420f521f
